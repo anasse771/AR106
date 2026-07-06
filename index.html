@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR106-WEB </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="antialiased">
+<!-- Custom Cursor -->
+
+
+    <!-- 1. INTRO SCREEN: Color Selection -->
+    <section id="intro-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black text-white">
+        <h1 id="intro-title" class="text-4xl md:text-6xl font-bold mb-16 tracking-tighter text-center px-4">
+            CLICK ON YOUR<br>FAVORITE COLOR.
+        </h1>
+
+        <!-- Color Palette -->
+        <div class="flex items-end h-[30vh] gap-1 md:gap-3 px-4">
+            <div class="color-bar w-8 md:w-16 h-full bg-[#f97316] cursor-pointer" data-color="#f97316"></div>
+            <!-- Orange -->
+            <div class="color-bar w-8 md:w-16 h-[90%] bg-[#eab308] cursor-pointer" data-color="#eab308"></div>
+            <!-- Yellow -->
+            <div class="color-bar w-8 md:w-16 h-[80%] bg-[#22c55e] cursor-pointer" data-color="#22c55e"></div>
+            <!-- Green -->
+            <div class="color-bar w-8 md:w-16 h-[95%] bg-[#06b6d4] cursor-pointer" data-color="#06b6d4"></div>
+            <!-- Cyan -->
+            <div class="color-bar w-8 md:w-16 h-[85%] bg-[#ec4899] cursor-pointer" data-color="#ec4899"></div>
+            <!-- Pink -->
+            <div class="color-bar w-8 md:w-16 h-full bg-[#ffffff] cursor-pointer" data-color="#ffffff"></div>
+            <!-- White -->
+        </div>
+    </section>
+
+    <!-- 2. MAIN CONTENT (Hidden initially) -->
+    <main id="main-content" class="hidden relative z-10 text-black">
+
+        <!-- Navigation Bar -->
+        <nav id="navbar" class="fixed top-0 left-0 w-full px-6 md:px-12 py-8 flex justify-between items-center z-50"
+            style="font-family: 'Oswald', sans-serif;">
+            <div class="text-3xl md:text-4xl font-black uppercase tracking-tighter cursor-pointer hover-trigger"
+                onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                DEV106
+            </div>
+            <div class="hidden md:flex gap-8 text-xl font-bold uppercase tracking-tight">
+                <a href="#hero-subtitle"
+                    class="hover-trigger cursor-pointer hover:opacity-50 transition-opacity">Home</a>
+                <a href="#about-section"
+                    class="hover-trigger cursor-pointer hover:opacity-50 transition-opacity">About</a>
+                <a href="#blog-section"
+                    class="hover-trigger cursor-pointer hover:opacity-50 transition-opacity">Blog</a>
+                <a href="#contact-section"
+                    class="hover-trigger cursor-pointer hover:opacity-50 transition-opacity">Contact</a>
+            </div>
+            <ul>
+                <li>
+                    <button id="btn-change-color" class="color-switcher-btn" title="Change Theme">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                            <path d="M2 12h20"></path>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="h-screen flex flex-col items-center justify-center relative overflow-hidden">
+
+            <div class="grid-bg"></div>
+            <h2 id="hero-subtitle" class="text-2xl md:text-4xl font-bold tracking-tighter mb-4 z-10 relative">
+                <div class="hero-container">
+                    <section id="home" class="hero-container">
+                        
+
+                        <!-- 1. La partie Avatar -->
+                        <div class="profile-wrapper">
+                            <div class="profile-image">
+                                <img src="me.png" alt="Anasse Riyahi"> 
+                            </div>
+                            <div class="status-badge">
+                                <span class="pulse-dot"></span> Available for work
+                            </div>
+                        </div>
+                        <h3 class="hello-text">HELLO WORLD</h3>
+                        <h1 class="main-title">AR106</h1>
+                        <div class="hero-buttons">
+                            <a href="CV_Anasse_Riyahi.pdf" download="CV_Anasse_Riyahi_FullStack" class="btn-download">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download CV
+                            </a>
+                            <a href="#contact-section" class="btn-contact">Let's Talk</a>
+                        </div>
+
+                </div>
+        </section>
+        </section>
+
+        <!-- Intro Text Section -->
+
+
+        <section id="about" class="intro-section reveal">
+            <div class="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
+                <h2 class="massive-text absolute -top-10 -left-10 text-black">INTRO</h2>
+            </div>
+            <div class="z-10 max-w-4xl">
+                <h2 class="section-title mb-8">INTRODUCTION</h2>
+                <p id="intro-text" class="text-2xl md:text-5xl font-bold leading-tight tracking-tight max-w-3xl">
+                    Hi, I’m Anasse Riyahi—a 19-year-old freelance Full-Stack Developer . I'm a first-year Digital
+                    Development student at CMC Casablanca, passionate about web development and always eager to
+                    learn
+                    new technologies. I enjoy turning ideas into simple, functional, and responsive web projects
+                    while
+                    growing my skills every day.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- About Section -->
+        <section id="about-section"
+            class="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20 relative border-t border-black/10">
+            <div class="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
+                <h2 class="massive-text absolute -top-10 -left-10 text-black">ABOUT</h2>
+            </div>
+            <div class="z-10">
+                <h2 class="section-title mb-12 hover-trigger">ABOUT</h2>
+                <div class="flex flex-col md:flex-row items-start md:items-center gap-12">
+                    <div class="action-btn hover-trigger" onclick="openDetail('about')">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <p class="text-2xl md:text-4xl font-bold tracking-tight">
+                        I am crafting modern, interactive web experiences and robust backend solutions in Morocco.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog-section"
+            class="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20 relative border-t border-black/10">
+            <div class="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
+                <h2 class="massive-text absolute -top-10 -left-10 text-black">BLOG</h2>
+            </div>
+            <div class="z-10">
+                <h2 class="section-title mb-12 hover-trigger">BLOG</h2>
+                <div class="flex flex-col md:flex-row items-start md:items-center gap-12">
+                    <div class="action-btn hover-trigger" onclick="openDetail('blog')">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <p class="text-2xl md:text-4xl font-bold tracking-tight">
+                        We will post about web development insights, coding challenges, and my journey in tech.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact-section"
+            class="min-h-screen flex flex-col justify-center px-6 md:px-20 py-20 relative border-t border-black/10">
+            <div class="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
+                <h2 class="massive-text absolute -top-10 -left-10 text-black">CONTACT</h2>
+            </div>
+            <div class="z-10">
+                <h2 class="section-title mb-12 hover-trigger">CONTACT</h2>
+                <div class="flex flex-col md:flex-row items-start md:items-center gap-12">
+                    <div class="action-btn hover-trigger" onclick="openDetail('contact')">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="3"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <p class="text-2xl md:text-4xl font-bold tracking-tight">
+                        Contact me for freelance projects, technical collaborations, or inquiries.
+                        <br>Feel free to reach out and let's build something great together.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 3. DETAIL OVERLAY (Expands on button click) -->
+    <div id="detail-overlay" class="fixed inset-0 z-[60] bg-black text-white flex flex-col p-6 md:p-20 overflow-y-auto"
+        style="display: none;">
+
+        <!-- Close Button -->
+        <div class="fixed top-10 left-10 z-[70]">
+            <div class="action-btn bg-white hover-trigger" onclick="closeDetail()">
+                <svg viewBox="0 0 24 24" style="fill: black; stroke: black;">
+                    <path d="M18 6L6 18M6 6l12 12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+        </div>
+
+        <div id="detail-content" class="mt-32 max-w-6xl mx-auto w-full">
+            <!-- Content injected via JS -->
+        </div>
+    </div>
+
+   <div id="custom-cursor">
+    <svg viewBox="0 0 24 24" width="24" height="24">
+        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" fill="white"/>
+    </svg>
+</div>
+
+<script src="j.js"></script>
+</body>
+<footer class="bg-black py-6 text-center footer-dynamique">
+    <p>&copy; 2026 AR106. All rights reserved.</p>
+</footer>
+
+</html>
